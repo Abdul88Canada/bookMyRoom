@@ -5,4 +5,6 @@ const citySchema = new mongoose.Schema({
     createdAt: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model('City', citySchema);
+const City = mongoose.model('City', citySchema);
+
+export default City;
