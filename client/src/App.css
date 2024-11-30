@@ -33,6 +33,6 @@
 .main-layout .content {
   flex: 1; /* Take the remaining space */
   padding: 20px; /* Add padding for content */
-  background-color: #f5f5f5; /* Background color for content area */
+  background-color: rgb(241, 244, 254); /* Background color for content area */
   overflow-y: auto; /* Allow scrolling if content overflows */
 }

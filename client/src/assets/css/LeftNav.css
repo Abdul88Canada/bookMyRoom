@@ -69,3 +69,28 @@
 .left-nav li:last-child i {
     font-size: 14px; /* Adjust icon size for Admin Platform */
 }
+
+@media screen and (max-width: 768px) {
+    .left-nav {
+        width: 40px; /* Narrower width for small screens */
+        padding: 10px 0; /* Adjust padding */
+        display:contents;
+    }
+
+    .left-nav ul {
+        gap: 15px; /* Reduce spacing between items */
+    }
+
+    .left-nav li {
+        width: 20px; /* Smaller circular items */
+        height: 20px; /* Keep items square */
+    }
+
+    .left-nav li span {
+        display: none; /* Hide the text labels */
+    }
+
+    .left-nav li i {
+        margin-right: 0; /* Remove icon margin */
+    }
+}

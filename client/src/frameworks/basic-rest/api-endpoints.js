@@ -1,3 +1,4 @@
 export const API_ENDPOINTS = {
-    GET_ROOMS: '/rooms/location'
+    GET_ROOMS: '/rooms/location',
+    BOOKINGS: '/bookings'
 }

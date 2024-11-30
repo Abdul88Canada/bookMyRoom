@@ -36,6 +36,10 @@
     cursor: pointer;
 }
 
+.room-card:hover {
+    transform: scale(1.01);
+}
+
 .room-card img {
     width: 100%;
     height: 150px;
@@ -60,11 +64,176 @@
     background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 4px;
-    padding: 10px;
+    border-radius: 25px;
+    padding: 10px 15px;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 .book-button:hover {
     background-color: #0056b3;
+}
+
+.amenity-tag {
+    background-color: #f4f7fb;
+    color: #0044cc;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+    display: inline-block;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 10px; /* Add padding for smaller screens */
+}
+
+/* Modal */
+.bmodal {
+    background: #ffffff;
+    width: 500px;
+    max-width: 100%; /* Make it fit the screen width */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1001;
+    position: relative;
+}
+
+/* Modal Header */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.modal-header .close-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.modal-header .close-button:hover {
+    color: #333;
+}
+
+/* Modal Body */
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-size: 14px;
+    color: #333;
+}
+
+.form-group input,
+.form-group select {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.date-picker {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* Modal Footer */
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.submit-button,
+.close-button {
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.submit-button {
+    background: #0044cc;
+    color: white;
+}
+
+.submit-button:hover {
+    background: #0033a1;
+}
+
+.close-button {
+    background: #ddd;
+    color: #333;
+}
+
+.close-button:hover {
+    background: #bbb;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .modal {
+        width: 100%; /* Full-width for smaller devices */
+        padding: 15px; /* Adjust padding */
+        border-radius: 0; /* Remove rounded corners for a seamless look */
+        height: auto; /* Allow modal to expand based on content */
+        overflow-y: auto; /* Scrollable if content overflows */
+    }
+
+    .modal-header h2 {
+        font-size: 16px; /* Adjust header font size */
+    }
+
+    .form-group label {
+        font-size: 13px; /* Adjust label font size */
+    }
+
+    .form-group input,
+    .form-group select {
+        font-size: 13px; /* Adjust input font size */
+        padding: 8px; /* Adjust padding for touch-friendliness */
+    }
+
+    .submit-button,
+    .close-button {
+        font-size: 14px; /* Adjust button font size */
+        padding: 10px; /* Adjust button padding */
+    }
 }

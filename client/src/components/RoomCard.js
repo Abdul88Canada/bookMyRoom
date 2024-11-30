@@ -10,11 +10,18 @@ const RoomCard = ({ room, onBook }) => {
             />
             <div className="room-details">
                 <h3>{room.name}</h3>
-                <p>{room.location}</p>
                 <p>
                     <i className="fas fa-users"></i> {room.capacity} people
                 </p>
-                <button onClick={() => onBook(room.id)} className="book-button">
+                {/* Amenities as tags */}
+                <div className="room-amenities">
+                    {room.amenities?.map((amenity, index) => (
+                        <span key={index} className="amenity-tag">
+                            {amenity}
+                        </span>
+                    ))}
+                </div>
+                <button onClick={() => onBook(room._id)} className="book-button">
                     Book
                 </button>
             </div>

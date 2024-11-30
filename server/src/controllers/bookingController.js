@@ -3,18 +3,34 @@ import Room from '../models/Room.js';
 
 export const createBooking = async (req, res) => {
     try {
-        const { roomId, date, slot } = req.body;
+        const { roomId, date, slot, title, name, phone, email } = req.body;
 
-        if (!roomId || !date || !slot) {
-            return res.status(400).json({ message: 'roomId, date, and slot are required.' });
+        // Validate required fields
+        if (!roomId || !date || !slot || !title || !name || !phone || !email) {
+            return res.status(400).json({
+                message: 'roomId, date, slot, title, name, phone, and email are required.',
+            });
         }
 
+        // Validate slot availability
         const existingBooking = await Booking.findOne({ room: roomId, date, slot });
         if (existingBooking) {
             return res.status(400).json({ message: 'Slot already booked.' });
         }
 
-        const booking = new Booking({ room: roomId, user: req.user._id, date, slot });
+        // Create a new booking
+        const booking = new Booking({
+            room: roomId,
+            user: req.user?._id, // Optional: Add user ID if authentication is used
+            date,
+            slot,
+            title,
+            name,
+            phone,
+            email,
+        });
+
+        // Save booking to the database
         await booking.save();
 
         res.status(201).json({ message: 'Booking created successfully.', booking });
@@ -22,6 +38,7 @@ export const createBooking = async (req, res) => {
         res.status(500).json({ message: 'Server error.', error });
     }
 };
+
 
 // Additional CRUD operations for bookings can be added here.
 export const getAllBookings = async (req, res) => {
