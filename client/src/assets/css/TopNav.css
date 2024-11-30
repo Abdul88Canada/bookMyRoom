@@ -1,0 +1,95 @@
+/* TopNav container */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    height: 60px;
+}
+
+/* Left section (menu + logo) */
+.left-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.menu-button {
+    background-color: #f4f7fb;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.menu-button i {
+    color: #495057;
+    font-size: 16px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    height: 90px;
+}
+
+.logo span {
+    font-size: 18px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+/* Right section (admin link + icons) */
+.right-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.admin-platform {
+    text-decoration: none;
+    color: #0044cc;
+    background-color: #f4f7fb;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.admin-platform i {
+    font-size: 12px;
+}
+
+.icon-button {
+    background-color: #f4f7fb;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.icon-button i {
+    color: #495057;
+    font-size: 16px;
+}

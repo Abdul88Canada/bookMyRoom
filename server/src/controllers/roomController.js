@@ -71,3 +71,24 @@ export const deleteRoom = async (req, res) => {
         res.status(500).json({ message: 'Server error.', error });
     }
 };
+
+export const getRoomsByLocationId = async (req, res) => {
+    try {
+        const { locationId } = req.params;
+
+        if (!locationId) {
+            return res.status(400).json({ message: 'Location ID is required.' });
+        }
+
+        const rooms = await Room.find({ location: locationId });
+
+        if (!rooms || rooms.length === 0) {
+            return res.status(404).json({ message: 'No rooms found for this location.' });
+        }
+
+        res.status(200).json(rooms);
+    } catch (error) {
+        res.status(500).json({ message: 'Server error.', error });
+    }
+};
+

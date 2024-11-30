@@ -1,0 +1,71 @@
+/* LeftNav container */
+.left-nav {
+    width: 250px;
+    background-color: #f4f7fb; /* Light blue-gray background */
+    height: 100vh;
+    padding: 20px 0;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+/* List styles */
+.left-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Default list item styles */
+.left-nav li {
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    color: #495057; /* Neutral gray text color */
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    border-radius: 20px; /* Make hover background oval */
+    position: relative;
+}
+
+/* Icon styling */
+.left-nav li i {
+    margin-right: 12px;
+    font-size: 16px;
+    color: #495057; /* Icon matches text */
+}
+
+/* Active item styling */
+.left-nav li.active {
+    background-color: #485fb8; /* Correct active background color */
+    color: #ffffff; /* White text color for active item */
+    font-weight: 500; /* Medium font weight for active item */
+    border-radius: 20px; /* Oval-shaped background */
+}
+
+/* Active icon styling */
+.left-nav li.active i {
+    color: #ffffff; /* White icon color for active item */
+}
+
+/* Hover effect */
+.left-nav li:hover {
+    background-color: #ebf2ff; /* Lighter blue on hover */
+    color: #0044cc; /* Blue text on hover */
+}
+
+.left-nav li:hover i {
+    color: #0044cc; /* Blue icon color on hover */
+}
+
+/* Admin Platform link spacing */
+.left-nav li:last-child {
+    margin-top: 20px; /* Add spacing above Admin Platform link */
+    font-size: 13px; /* Slightly smaller font size */
+}
+
+.left-nav li:last-child i {
+    font-size: 14px; /* Adjust icon size for Admin Platform */
+}
