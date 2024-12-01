@@ -1,15 +1,19 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./Auth.css";
 import http from "../../frameworks/basic-rest/http";
 import { toast } from "react-toastify";
+import UserContext from "../../contexts/user/UserContext";
+import Cookies from 'js-cookie';
 
 const Login = () => {
+    const { signIn } = useContext(UserContext);
     const [formData, setFormData] = useState({
         email: "",
         password: "",
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const navigate = useNavigate();
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -24,8 +28,12 @@ const Login = () => {
 
         try {
             setIsSubmitting(true);
-            await http.post("/auth/login", formData);
+            const response = await http.post("/auth/user/login", formData);
             toast.success("Login successful!");
+            const { user, token } = response.data;
+            signIn(user);
+            Cookies.set('auth_token', token, { expires: 7 });
+            navigate("/dashboard");
             // Redirect to dashboard or any other page
         } catch (error) {
             toast.error(`Login failed: ${error.response?.data?.message || error.message}`);

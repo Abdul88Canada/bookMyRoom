@@ -6,8 +6,9 @@ const userSchema = new mongoose.Schema({
     password: { type: String, required: true },
     role: { type: String, enum: ['admin', 'user', 'full-admin'], default: 'user' },
     createdAt: { type: Date, default: Date.now },
+    companyId: { type: String, required: true}
 });
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('mrb_User', userSchema);
 
 export default User;
