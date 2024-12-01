@@ -4,6 +4,8 @@ export const API_ENDPOINTS = {
     ADMIN_COMPANY_DIRECTORY: '/admin/company',
     BOOKINGS: '/bookings',
     LOCATION: '/locations',
+    
+    USER_COMPANY: '/user/company',
 
     ADMIN_ADD_COMPANY: '/admin/company/add',
     ADMIN_GET_COMPANY: '/admin/company/'

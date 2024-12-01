@@ -1,0 +1,110 @@
+/* Company Directory Container */
+.company-directory {
+  padding: 20px;
+  background-color: #f1f4fe;
+  min-height: 100vh;
+}
+
+/* Header */
+.company-directory .header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.company-directory .header h1 {
+  margin: 0;
+  font-size: 28px;
+  color: #485fb8;
+}
+
+.company-directory .header p {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #777;
+}
+
+/* User List */
+.user-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* User Card */
+.user-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  width: 200px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.user-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Avatar Icon */
+.user-card .user-avatar {
+  background-color: #f4f7fb;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.user-card .user-avatar i {
+  font-size: 24px;
+  color: #485fb8;
+}
+
+/* User Info */
+.user-card .user-info h2 {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-card .user-info p {
+  margin: 0;
+  font-size: 14px;
+  color: #777;
+}
+
+/* User Actions */
+.user-card .user-actions {
+  margin-top: 10px;
+  background-color: #f4f7fb;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-card .user-actions i {
+  font-size: 18px;
+  color: #485fb8;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.user-card .user-actions i:hover {
+  color: #333;
+}

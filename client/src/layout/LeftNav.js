@@ -43,7 +43,7 @@ const LeftNav = () => {
                     </li>
                     <li>
                         <NavLink
-                            to="/company-directory"
+                            to="/app/company-directory"
                             className={({ isActive }) =>
                                 isActive ? 'nav-link active' : 'nav-link'
                             }

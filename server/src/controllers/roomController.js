@@ -82,7 +82,6 @@ export const getRoomsByLocationId = async (req, res) => {
             return res.status(400).json({ message: "Location ID is required." });
         }
 
-        console.log(`Fetching rooms for location: ${locationId}`);
         const rooms = await Room.find({ location: locationId }).populate('location');
 
         if (!rooms || rooms.length === 0) {
@@ -90,18 +89,13 @@ export const getRoomsByLocationId = async (req, res) => {
             return res.status(404).json({ message: "No rooms found for this location." });
         }
 
-        console.log(`Found ${rooms.length} rooms for location: ${locationId}`);
 
         // Fetch all bookings for the rooms
         const roomIds = rooms.map((room) => room._id);
-        console.log(`Room IDs: ${roomIds}`);
 
         const bookings = await Booking.find({
             room: { $in: roomIds },
         });
-
-        console.log(`Found ${bookings.length} bookings for these rooms.`);
-        console.log("Bookings:", bookings);
 
         // Create a dictionary of booked slots by room and weekday
         const bookedSlotsByRoomAndWeekday = {};
@@ -117,23 +111,18 @@ export const getRoomsByLocationId = async (req, res) => {
             bookedSlotsByRoomAndWeekday[key].push(booking.slot);
         });
 
-        console.log("Booked Slots by Room and Weekday:", bookedSlotsByRoomAndWeekday);
 
         // Filter available slots for each room
         const roomsWithAvailableSlots = rooms.map((room) => {
-            console.log(`Processing room: ${room.name}`);
 
             const updatedAvailableSlots = room.availableSlots.map((slotGroup) => {
                 const key = `${room._id}-${slotGroup.day}`;
                 const bookedSlots = bookedSlotsByRoomAndWeekday[key] || [];
-                console.log(`Booked slots for key ${key}:`, bookedSlots);
 
                 // Filter out booked slots
                 const availableSlots = slotGroup.slots.filter(
                     (slot) => !bookedSlots.includes(slot)
                 );
-
-                console.log(`Available slots for day ${slotGroup.day}:`, availableSlots);
 
                 return {
                     day: slotGroup.day,

@@ -11,6 +11,7 @@ import locationRoutes from './routes/locationRoutes.js';
 import bookingRoutes from './routes/bookingRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
 import authRoutes from './routes/authRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 
 const app = express();
 app.use(express.json()); // for parsing application/json
@@ -30,7 +31,7 @@ app.use('/api/locations', locationRoutes);
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/auth', authRoutes);
-
+app.use('/api/user', userRoutes);
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
