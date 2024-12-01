@@ -5,10 +5,10 @@ const LeftNav = () => {
     return (
         <div className="left-nav">
         <ul>
-            <li>
+            {/* <li>
                 <i className="fas fa-map"></i>
                 <span>Office Map</span>
-            </li>
+            </li> */}
             <li>
                 <i className="fas fa-calendar-alt"></i>
                 <span>Schedule</span>

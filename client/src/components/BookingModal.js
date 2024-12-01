@@ -8,7 +8,6 @@ import { API_ENDPOINTS } from "../frameworks/basic-rest/api-endpoints";
 
 const BookingModal = ({ room, onClose, onSubmit }) => {
     const [formData, setFormData] = useState({
-        title: "",
         date: null,
         timeSlot: "",
         name: "",
@@ -38,14 +37,13 @@ const BookingModal = ({ room, onClose, onSubmit }) => {
     };
 
     const handleFormSubmit = async () => {
-        if (!formData.title || !formData.date || !formData.timeSlot || !formData.name || !formData.phone || !formData.email) {
+        if (!formData.date || !formData.timeSlot || !formData.name || !formData.phone || !formData.email) {
             toast.error("Please fill in all required fields.");
             return;
         }
 
         const bookingData = {
             roomId: room._id,
-            title: formData.title,
             date: formData.date.toISOString(), // Format date as ISO string
             slot: formData.timeSlot,
             name: formData.name,
@@ -78,17 +76,6 @@ const BookingModal = ({ room, onClose, onSubmit }) => {
                     </button>
                 </div>
                 <div className="modal-body">
-                    <div className="form-group">
-                        <label>Title</label>
-                        <input
-                            type="text"
-                            name="title"
-                            value={formData.title}
-                            onChange={handleInputChange}
-                            placeholder="Add title..."
-                            disabled={isSubmitting}
-                        />
-                    </div>
                     <div className="form-group">
                         <label>Meeting Room</label>
                         <p>{room.name}</p>

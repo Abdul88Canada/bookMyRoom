@@ -1,0 +1,230 @@
+/* General Layout */
+.mon-icon {
+    height: 65px;
+}
+.landing-container {
+    font-family: "Arial", sans-serif;
+    color: #333;
+    background: url('../../assets/images/iStock-1194320048-blurred-office-space-scaled.jpg') center center / cover no-repeat;
+    backdrop-filter: blur(8px);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Top Navigation */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.top-nav .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0044cc;
+    cursor: pointer;
+}
+
+.top-nav .login-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #0044cc;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.top-nav .login-button:hover {
+    background-color: #0033a1;
+}
+
+/* Landing Header Section */
+.landing-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    background-color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin: 10px 0;
+}
+
+/* Two-column Layout */
+.header-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+
+/* Text Content */
+.header-text {
+    flex: 1;
+    text-align: left;
+}
+
+.header-text h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #0044cc;
+    margin-bottom: 20px;
+}
+
+.header-text p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.landing-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.cta-button {
+    background: #0044cc;
+    color: white;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #0033a1;
+}
+
+.secondary-button {
+    background: white;
+    color: #0044cc;
+    border: 2px solid #0044cc;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.secondary-button:hover {
+    background: #0044cc;
+    color: white;
+}
+
+/* Illustration/Image Content */
+.header-image {
+    flex: 1;
+    text-align: right;
+}
+
+.header-image img {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 10px;
+}
+
+
+/* Steps Section */
+/* Landing Steps Section */
+.landing-steps {
+    background-color: #f5f9ff; /* Light blue background */
+    padding: 50px 20px;
+    text-align: center;
+    margin-top: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+}
+
+/* Steps Header */
+.steps-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+    flex-direction: column;
+}
+
+.steps-header .header-image img {
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.steps-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0044cc;
+}
+
+/* Steps Container */
+.steps-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Individual Step */
+.step {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+/* Step Icon */
+.step-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: #0044cc;
+    margin-bottom: 15px;
+}
+
+/* Step Content */
+.step-content h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.step-content p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .steps-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+
+/* Footer */
+.landing-footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+    font-size: 0.9rem;
+}

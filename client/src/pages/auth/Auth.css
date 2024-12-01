@@ -1,0 +1,100 @@
+/* Background with blur */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('../../assets/images/iStock-1194320048-blurred-office-space-scaled.jpg') center center / cover no-repeat;
+    backdrop-filter: blur(8px);
+}
+
+/* Card */
+.auth-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Heading */
+.auth-card h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Submit Button */
+.auth-submit-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #0044cc;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.auth-submit-button:hover {
+    background-color: #0033a1;
+}
+
+.auth-submit-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Footer Link */
+.auth-footer {
+    margin-top: 15px;
+}
+
+.auth-footer a {
+    color: #0044cc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+.logo-auth {
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-auth img {
+    height: 90px;
+}
+
+.logo-auth span {
+    font-size: 18px;
+    font-weight: bold;
+    color: #343a40;
+}

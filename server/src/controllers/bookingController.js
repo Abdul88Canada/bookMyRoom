@@ -3,12 +3,12 @@ import Room from '../models/Room.js';
 
 export const createBooking = async (req, res) => {
     try {
-        const { roomId, date, slot, title, name, phone, email } = req.body;
+        const { roomId, date, slot, name, phone, email } = req.body;
 
         // Validate required fields
-        if (!roomId || !date || !slot || !title || !name || !phone || !email) {
+        if (!roomId || !date || !slot || !name || !phone || !email) {
             return res.status(400).json({
-                message: 'roomId, date, slot, title, name, phone, and email are required.',
+                message: 'roomId, date, slot, name, phone, and email are required.',
             });
         }
 
@@ -24,7 +24,6 @@ export const createBooking = async (req, res) => {
             user: req.user?._id, // Optional: Add user ID if authentication is used
             date,
             slot,
-            title,
             name,
             phone,
             email,

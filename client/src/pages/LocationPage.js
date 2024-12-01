@@ -45,7 +45,7 @@ const LocationPage = () => {
 
     return (
         <div className="location-page">
-            <h1>Meeting Rooms</h1>
+            <h1>{rooms[0]?.location.name} Meeting Rooms</h1>
             <Filters
                 date={""}
                 setDate={() => {}}

@@ -83,7 +83,7 @@ export const getRoomsByLocationId = async (req, res) => {
         }
 
         console.log(`Fetching rooms for location: ${locationId}`);
-        const rooms = await Room.find({ location: locationId });
+        const rooms = await Room.find({ location: locationId }).populate('location');
 
         if (!rooms || rooms.length === 0) {
             console.log(`No rooms found for location: ${locationId}`);
