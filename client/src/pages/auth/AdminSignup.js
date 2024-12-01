@@ -4,6 +4,7 @@ import "./Auth.css";
 import http from "../../frameworks/basic-rest/http";
 import { toast } from "react-toastify";
 import UserContext from "../../contexts/user/UserContext";
+import Cookies from 'js-cookie';
 
 const AdminSignup = () => {
     const { signIn } = useContext(UserContext);
@@ -28,13 +29,12 @@ const AdminSignup = () => {
 
         try {
             setIsSubmitting(true);
-            const response = await http.post("/admin/signup", formData);
+            const response = await http.post("/auth/admin/signup", formData);
             toast.success("Signup successful!");
-            const { user, token } = response.data;
-
+            const { admin, token } = response.data;
+            signIn(admin);
+            Cookies.set('auth_token', token, { expires: 7 });
             // Save user data and token using context
-            signIn({ ...user, token });
-
             // Redirect to the admin dashboard
             navigate("/admin/dashboard");
         } catch (error) {

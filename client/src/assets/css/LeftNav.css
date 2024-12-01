@@ -1,7 +1,7 @@
 /* LeftNav container */
 .left-nav {
     width: 250px;
-    background-color: #f4f7fb; /* Light blue-gray background */
+    background-color: #f4f7fb; /* Light background */
     height: 100vh;
     padding: 20px 0;
     font-family: 'Arial', sans-serif;
@@ -9,72 +9,124 @@
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
+    transition: width 0.3s ease-in-out;
 }
 
-/* List styles */
-.left-nav ul {
+/* Active item */
+nav ul li a.active {
+    background-color:rgb(93, 114, 168);
+    color: #ffffff;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 25px;
+}
+
+nav ul li a.active i {
+    color: #ffffff;
+}
+
+nav ul li a.active span {
+    color: #ffffff;
+}
+
+/* Logo */
+.leftnav-logo {
+    margin: 0 auto;
+    display: block;
+    width: 60%;
+}
+
+/* Sidebar header */
+.sidebar-header {
+    text-align: center;
+    padding: 10px 0;
+    color: #495057;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Nav styles */
+nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-/* Default list item styles */
-.left-nav li {
+nav ul li {
     padding: 12px 20px;
     display: flex;
     align-items: center;
-    color: #495057; /* Neutral gray text color */
+    color: #495057;
     cursor: pointer;
-    transition: background-color 0.2s, color 0.2s;
-    border-radius: 20px; /* Make hover background oval */
-    position: relative;
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-/* Icon styling */
-.left-nav li i {
+nav ul li i {
     margin-right: 12px;
     font-size: 16px;
-    color: #495057; /* Icon matches text */
+    color: #495057;
 }
 
-/* Active item styling */
-.left-nav li.active {
-    background-color: #485fb8; /* Correct active background color */
-    color: #ffffff; /* White text color for active item */
-    font-weight: 500; /* Medium font weight for active item */
-    border-radius: 20px; /* Oval-shaped background */
+nav ul li span {
+    font-weight: 500;
 }
 
-/* Active icon styling */
-.left-nav li.active i {
-    color: #ffffff; /* White icon color for active item */
+/* Active item */
+nav ul li.active {
+    background-color: #485fb8;
+    color: #ffffff;
+    font-weight: bold;
 }
 
-/* Hover effect */
-.left-nav li:hover {
-    background-color: #ebf2ff; /* Lighter blue on hover */
-    color: #0044cc; /* Blue text on hover */
+nav ul li.active i {
+    color: #ffffff;
 }
 
-.left-nav li:hover i {
-    color: #0044cc; /* Blue icon color on hover */
+nav ul li.active span {
+    color: #ffffff;
 }
 
-/* Admin Platform link spacing */
-.left-nav li:last-child {
-    margin-top: 20px; /* Add spacing above Admin Platform link */
-    font-size: 13px; /* Slightly smaller font size */
+/* Hover state */
+nav ul li:hover {
+    background-color: #ebf2ff;
+    color: #0044cc;
 }
 
-.left-nav li:last-child i {
-    font-size: 14px; /* Adjust icon size for Admin Platform */
+nav ul li:hover i {
+    color: #0044cc;
+}
+
+/* Divider */
+.divider {
+    height: 1px;
+    background-color: #dcdcdc;
+    margin: 15px 20px;
+}
+
+/* Sidebar toggle button */
+.sidebar-toggle {
+    margin: 20px auto;
+    align-self: center;
+    border: none;
+    background-color: #485fb8;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.sidebar-toggle:hover {
+    background-color: #364494;
 }
 
 @media screen and (max-width: 768px) {
     .left-nav {
-        width: 40px; /* Narrower width for small screens */
+        max-width: 20px; /* Narrower width for small screens */
         padding: 10px 0; /* Adjust padding */
         display:contents;
+        background-color: #f4f7fb; /* Light background */
     }
 
     .left-nav ul {

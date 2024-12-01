@@ -26,7 +26,7 @@ const Signup = () => {
 
         try {
             setIsSubmitting(true);
-            await http.post("/api/auth/signup", formData);
+            await http.post("/auth/signup", formData);
             toast.success("Signup successful!");
             // Redirect to login page
         } catch (error) {

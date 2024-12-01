@@ -50,9 +50,6 @@ const BookingModal = ({ room, onClose, onSubmit }) => {
             phone: formData.phone,
             email: formData.email,
         };
-
-        console.log('bookingData', bookingData)
-
         try {
             setIsSubmitting(true);
             const response = await http.post(`${API_ENDPOINTS.BOOKINGS}`, bookingData); // Replace with your API endpoint

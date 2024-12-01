@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import '../assets/css/LeftNav.css';
 
-const LeftNav = () => {
+const AdminLeftNav = () => {
 
     return (
         <div className={`left-nav`}>
@@ -32,7 +32,7 @@ const LeftNav = () => {
                     </li>
                     <li>
                         <NavLink
-                            to="/dashboard"
+                            to="/admin/dashboard"
                             className={({ isActive }) =>
                                 isActive ? 'nav-link active' : 'nav-link'
                             }
@@ -43,7 +43,7 @@ const LeftNav = () => {
                     </li>
                     <li>
                         <NavLink
-                            to="/company-directory"
+                            to="/admin/company-directory"
                             className={({ isActive }) =>
                                 isActive ? 'nav-link active' : 'nav-link'
                             }
@@ -70,4 +70,4 @@ const LeftNav = () => {
     );
 };
 
-export default LeftNav;
+export default AdminLeftNav;

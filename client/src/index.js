@@ -10,13 +10,14 @@ import { UserProvider } from './contexts/user/UserContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ErrorBoundary>
     <UserProvider>
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <App />
-      </BrowserRouter>
-      </UserProvider>
-    </ErrorBoundary>
+      <ErrorBoundary>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
+          <App />
+        </BrowserRouter>
+      </ErrorBoundary>
+    </UserProvider>
+
   </React.StrictMode>
 );
 

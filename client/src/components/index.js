@@ -4,12 +4,14 @@ import ProtectedRoute from "../Routes/ProtectedRoute";  // Ensure the path to Pr
 
 import LocationPage from "../pages/LocationPage";
 import MainLayout from "../layout/MainLayout";
+import AdminMainLayout from "../layout/AdminMainLayout";
 import Signup from "../pages/auth/Signup";
 import Login from "../pages/auth/Login";
 import LandingPage from "../pages/landing/LandingPage";
 import AdminSignup from "../pages/auth/AdminSignup";
 import AdminLogin from "../pages/auth/AdminLogin";
 import AdminLocationPage from "../pages/admin/AdminLocationPage";
+import AdminCompanyDirectory from "../pages/admin/AdminCompanyDirectory";
 
 const Index = () => {
     return (
@@ -18,9 +20,10 @@ const Index = () => {
                 {/* Nested route */}
                 <Route path=":locationId" element={<LocationPage />} />
             </Route>
-            <Route path="/admin" element={<ProtectedRoute><MainLayout /></ProtectedRoute>}>
+            <Route path="/admin" element={<ProtectedRoute><AdminMainLayout /></ProtectedRoute>}>
                 {/* Nested route */}
                 <Route path="/admin/dashboard" element={<AdminLocationPage />} />
+                <Route path="/admin/company-directory" element={<AdminCompanyDirectory />} />
             </Route>
             <Route path="/" element={<LandingPage />} />
             <Route path="/signup" element={<Signup />} />

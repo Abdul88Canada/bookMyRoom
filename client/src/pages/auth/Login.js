@@ -24,7 +24,7 @@ const Login = () => {
 
         try {
             setIsSubmitting(true);
-            await http.post("/api/auth/login", formData);
+            await http.post("/auth/login", formData);
             toast.success("Login successful!");
             // Redirect to dashboard or any other page
         } catch (error) {

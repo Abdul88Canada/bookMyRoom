@@ -10,6 +10,7 @@ import cityRoutes from './routes/cityRoutes.js';
 import locationRoutes from './routes/locationRoutes.js';
 import bookingRoutes from './routes/bookingRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
+import authRoutes from './routes/authRoutes.js';
 
 const app = express();
 app.use(express.json()); // for parsing application/json
@@ -28,6 +29,7 @@ app.use('/api/cities', cityRoutes);
 app.use('/api/locations', locationRoutes);
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/auth', authRoutes);
 
 
 // Connect to MongoDB
