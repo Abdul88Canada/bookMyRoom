@@ -19,6 +19,17 @@ const LeftNav = () => {
 
             <nav>
                 <ul>
+                <li>
+                        <NavLink
+                            to="/app/dashboard"
+                            className={({ isActive }) =>
+                                isActive ? 'nav-link active' : 'nav-link'
+                            }
+                        >
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </NavLink>
+                    </li>
                     <li>
                         <NavLink
                             to="/schedule"
@@ -32,7 +43,7 @@ const LeftNav = () => {
                     </li>
                     <li>
                         <NavLink
-                            to="/app/dashboard"
+                            to="/app/location"
                             className={({ isActive }) =>
                                 isActive ? 'nav-link active' : 'nav-link'
                             }
