@@ -70,7 +70,7 @@ export const adminLogin = async (req, res) => {
         { expiresIn: "30d" }
       );
   
-      res.status(200).json({ admin: { id: admin._id, email: admin.email, role: admin.role }, token });
+      res.status(200).json({ admin: { id: admin._id, email: admin.email, role: admin.role, status: admin.status }, token });
     } catch (error) {
       console.error('Something went wrong during admin login.', error);
       res.status(500).json({ message: "Something went wrong." });

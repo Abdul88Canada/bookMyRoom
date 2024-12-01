@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import RoomCard from "../../components/RoomCard";
-import Filters from "../../components/Filters";
 import "../../assets/css/LocationPage.css";
 import http from "../../frameworks/basic-rest/http";
 import { API_ENDPOINTS } from "../../frameworks/basic-rest/api-endpoints";
@@ -44,14 +43,6 @@ const AdminLocationPage = () => {
     return (
         <div className="location-page">
             <h1>All Meeting Rooms</h1>
-            <Filters
-                date={""}
-                setDate={() => {}}
-                time={""}
-                setTime={() => {}}
-                location={""}
-                setLocation={() => {}}
-            />
             <div className="room-list">
                 {rooms.length > 0 ? (
                     rooms.map((room) => (

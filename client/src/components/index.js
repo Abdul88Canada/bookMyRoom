@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoute from "../Routes/ProtectedRoute";  // Ensure the path to ProtectedRoute is correct
-
+import AdminProtectedRoute from "../Routes/AdminProtectedRoute";
 import LocationPage from "../pages/LocationPage";
 import MainLayout from "../layout/MainLayout";
 import AdminMainLayout from "../layout/AdminMainLayout";
@@ -20,7 +20,7 @@ const Index = () => {
                 {/* Nested route */}
                 <Route path=":locationId" element={<LocationPage />} />
             </Route>
-            <Route path="/admin" element={<ProtectedRoute><AdminMainLayout /></ProtectedRoute>}>
+            <Route path="/admin" element={<AdminProtectedRoute><AdminMainLayout /></AdminProtectedRoute>}>
                 {/* Nested route */}
                 <Route path="/admin/dashboard" element={<AdminLocationPage />} />
                 <Route path="/admin/company-directory" element={<AdminCompanyDirectory />} />
