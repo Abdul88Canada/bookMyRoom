@@ -41,9 +41,7 @@ const LocationPage = () => {
         setShowModal(false);
     };
 
-    const handleBookingSubmit = async (data) => {
-        const response = await http.post(`${API_ENDPOINTS.BOOKINGS}`)
-    };
+
 
     return (
         <div className="location-page">
@@ -70,7 +68,7 @@ const LocationPage = () => {
                 <BookingModal
                     room={selectedRoom}
                     onClose={handleModalClose}
-                    onSubmit={handleBookingSubmit}
+                    
                 />
             )}
         </div>

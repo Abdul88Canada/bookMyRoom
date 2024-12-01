@@ -59,7 +59,7 @@ const BookingModal = ({ room, onClose, onSubmit }) => {
             setIsSubmitting(true);
             const response = await http.post(`${API_ENDPOINTS.BOOKINGS}`, bookingData); // Replace with your API endpoint
             toast.success("Booking completed successfully!");
-            onSubmit(response.data);
+            //onSubmit(response.data);
             onClose();
         } catch (error) {
             toast.error(`Booking failed: ${error.response?.data?.message || error.message}`);
