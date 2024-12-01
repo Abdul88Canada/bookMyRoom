@@ -5,14 +5,17 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import ErrorBoundary from './components/ErrorBoundary';
+import { UserProvider } from './contexts/user/UserContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ErrorBoundary>
+    <UserProvider>
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <App />
       </BrowserRouter>
+      </UserProvider>
     </ErrorBoundary>
   </React.StrictMode>
 );
