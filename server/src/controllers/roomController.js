@@ -1,20 +1,28 @@
 import Room from '../models/Room.js';
 import Booking from '../models/Booking.js';
 
+
 export const createRoom = async (req, res) => {
     try {
-        const { name, locationId, capacity, amenities, availableSlots } = req.body;
+        const { name, location, capacity, amenities, availableSlots } = req.body;
 
-        if (!name || !locationId || !capacity) {
-            return res.status(400).json({ message: 'Name, locationId, and capacity are required.' });
+        if (!name || !location || !capacity) {
+            return res.status(400).json({ message: "Required fields are missing." });
         }
 
-        const room = new Room({ name, location: locationId, capacity, amenities, availableSlots });
-        await room.save();
+        const room = new Room({
+            name,
+            location,
+            capacity,
+            amenities,
+            availableSlots,
+        });
 
-        res.status(201).json({ message: 'Room created successfully.', room });
+        await room.save();
+        res.status(201).json({ message: "Room created successfully.", room });
     } catch (error) {
-        res.status(500).json({ message: 'Server error.', error });
+        console.error("Error creating room:", error);
+        res.status(500).json({ message: "Server error.", error });
     }
 };
 

@@ -1,20 +1,13 @@
 import React, { useState, useEffect } from "react";
 import RoomCard from "../../components/RoomCard";
+import AddRoomModal from "../../components/AddRoomModal";
 import "../../assets/css/LocationPage.css";
 import http from "../../frameworks/basic-rest/http";
 import { API_ENDPOINTS } from "../../frameworks/basic-rest/api-endpoints";
-import BookingModal from "../../components/BookingModal";
 
 const AdminLocationPage = () => {
     const [rooms, setRooms] = useState([]);
-    const [showModal, setShowModal] = useState(false);
-    const [selectedRoom, setSelectedRoom] = useState(null);
-    
-    const [formData, setFormData] = useState({
-        name: "",
-        phone: "",
-        email: "",
-    });
+    const [showAddModal, setShowAddModal] = useState(false);
 
     useEffect(() => {
         // Fetch rooms from API
@@ -29,35 +22,41 @@ const AdminLocationPage = () => {
         fetchRooms();
     }, []);
 
-    const handleBookClick = (room) => {
-        setSelectedRoom(room);
-        setShowModal(true);
+    const handleAddRoom = async (roomData) => {
+        try {
+            const response = await http.post(`${API_ENDPOINTS.ADD_ROOM}`, roomData);
+            setRooms((prev) => [...prev, response.data]);
+            setShowAddModal(false);
+        } catch (error) {
+            console.error("Failed to add room", error);
+        }
     };
-
-    const handleModalClose = () => {
-        setShowModal(false);
-    };
-
-
 
     return (
         <div className="location-page">
-            <h1>All Meeting Rooms</h1>
+            <div className="header-section">
+                <h1>All Meeting Rooms</h1>
+                <button
+                    className="add-button"
+                    onClick={() => setShowAddModal(true)}
+                >
+                    Add Room
+                </button>
+            </div>
             <div className="room-list">
                 {rooms.length > 0 ? (
                     rooms.map((room) => (
-                        <RoomCard key={room._id} room={room} onBook={() => handleBookClick(room)} />
+                        <RoomCard key={room._id} room={room} />
                     ))
                 ) : (
                     <p>No rooms available for the selected criteria.</p>
                 )}
             </div>
 
-            {showModal && (
-                <BookingModal
-                    room={selectedRoom}
-                    onClose={handleModalClose}
-                    
+            {showAddModal && (
+                <AddRoomModal
+                    onClose={() => setShowAddModal(false)}
+                    onSave={handleAddRoom}
                 />
             )}
         </div>

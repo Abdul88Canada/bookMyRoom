@@ -1,0 +1,77 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.adds-modal-content {
+    background: #fff;
+    border-radius: 8px;
+    width: 600px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.form-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.days-checkboxes {
+    margin-top: 20px;
+}
+
+.days-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.day-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.save-button,
+.cancel-button {
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+}
+
+.save-button {
+    background-color: #485fb8;
+    color: white;
+}
+
+.cancel-button {
+    background-color: #b84851;
+    color: white;
+}
+
+.remove-amenities {
+    padding: 1px 2px;
+    font-size: 16px;
+    background-color: snow;
+    border: none;
+    margin-left: 5px;
+    border-radius: 25px;
+    cursor: pointer;
+}

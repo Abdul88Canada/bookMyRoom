@@ -5,6 +5,7 @@ import {
     getCompanyById,
     deleteCompany,
 } from '../controllers/adminController.js';
+import { createRoom } from '../controllers/roomController.js';
 import authMiddleware from '../middleware/authMiddleware.js';
 import { checkAdminMiddleware } from '../middleware/checkAdminMiddleware.js';
 
@@ -25,5 +26,7 @@ router.get('/company/:id', getCompanyById);
 
 // Delete a company
 router.delete('/company/:id', deleteCompany);
+
+router.post('/rooms', createRoom);
 
 export default router;
