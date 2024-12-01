@@ -33,7 +33,7 @@ const Login = () => {
             const { user, token } = response.data;
             signIn(user);
             Cookies.set('auth_token', token, { expires: 7 });
-            navigate("/dashboard");
+            navigate("/app/dashboard");
             // Redirect to dashboard or any other page
         } catch (error) {
             toast.error(`Login failed: ${error.response?.data?.message || error.message}`);

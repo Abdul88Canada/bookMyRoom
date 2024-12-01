@@ -1,0 +1,71 @@
+/* User Dashboard Container */
+.user-dashboard {
+    padding: 20px;
+    background-color: #f4f7fb;
+    min-height: 100vh;
+  }
+  
+  /* Welcome Banner */
+  .welcome-banner {
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: #485fb8;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .welcome-banner h1 {
+    margin: 0;
+    font-size: 28px;
+  }
+  
+  .welcome-banner p {
+    margin-top: 10px;
+    font-size: 16px;
+  }
+  
+  /* Location List */
+  .location-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  /* Location Card */
+  .location-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 250px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .location-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .location-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .location-card h2 {
+    margin: 10px 0 5px;
+    font-size: 18px;
+    color: #485fb8;
+  }
+  
+  .location-card p {
+    font-size: 14px;
+    color: #777;
+  }
+  

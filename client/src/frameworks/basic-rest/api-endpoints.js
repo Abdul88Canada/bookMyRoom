@@ -3,6 +3,7 @@ export const API_ENDPOINTS = {
     GET_ALL_ROOMS: '/rooms',
     ADMIN_COMPANY_DIRECTORY: '/admin/company',
     BOOKINGS: '/bookings',
+    LOCATION: '/locations',
 
     ADMIN_ADD_COMPANY: '/admin/company/add',
     ADMIN_GET_COMPANY: '/admin/company/'

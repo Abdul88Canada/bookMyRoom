@@ -7,6 +7,9 @@ import {
     updateLocation,
     deleteLocation
 } from '../controllers/locationController.js';
+import authMiddleware from '../middleware/authMiddleware.js';
+
+router.use(authMiddleware);
 
 router.post('/', createLocation); // Create a location
 router.get('/', getAllLocations); // Get all locations
