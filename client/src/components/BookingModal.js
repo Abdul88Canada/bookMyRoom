@@ -19,13 +19,15 @@ const BookingModal = ({ room, onClose, handleBookingComplete }) => {
     };
 
     const handleDateChange = (date) => {
-        setFormData({ ...formData, date, timeSlot: "" }); // Reset time slot when date changes
+        // Normalize the selected date to the start of the day in UTC
+        const normalizedDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+        setFormData({ ...formData, date: normalizedDate, timeSlot: "" }); // Reset time slot when date changes
     };
 
     const handleTimeSlotChange = (e) => {
         setFormData({ ...formData, timeSlot: e.target.value });
     };
-
+    
     const getAvailableSlotsForDay = () => {
         if (!formData.date) return [];
     
