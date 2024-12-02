@@ -4,8 +4,8 @@ import { getToken } from "./get-token";
 
 const http = axios.create({
   //baseURL: process.env.SERVER_URL,
-  //baseURL: `https://cmass-server.onrender.com/api`,
-  baseURL: `http://localhost:5000/api`,
+  baseURL: `https://bookmyroom-d117.onrender.com/api`,
+  //baseURL: `http://localhost:5000/api`,
   timeout: 30000,
   headers: {
     Accept: "application/json",
