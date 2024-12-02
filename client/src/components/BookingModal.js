@@ -3,10 +3,10 @@ import DatePicker from "react-datepicker";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "react-datepicker/dist/react-datepicker.css";
-import http from "../frameworks/basic-rest/http"; // Replace with your HTTP client
+import http from "../frameworks/basic-rest/http"; // Ensure correct import for HTTP client
 import { API_ENDPOINTS } from "../frameworks/basic-rest/api-endpoints";
 
-const BookingModal = ({ room, onClose, onSubmit }) => {
+const BookingModal = ({ room, onClose, handleBookingComplete }) => {
     const [formData, setFormData] = useState({
         date: null,
         timeSlot: "",
@@ -14,7 +14,7 @@ const BookingModal = ({ room, onClose, onSubmit }) => {
         phone: "",
         email: "",
     });
-    const [isSubmitting, setIsSubmitting] = useState(false); // Loading state for form submission
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -22,7 +22,7 @@ const BookingModal = ({ room, onClose, onSubmit }) => {
     };
 
     const handleDateChange = (date) => {
-        setFormData({ ...formData, date, timeSlot: "" }); // Reset time slot on date change
+        setFormData({ ...formData, date, timeSlot: "" }); // Reset time slot when date changes
     };
 
     const handleTimeSlotChange = (e) => {
@@ -31,9 +31,28 @@ const BookingModal = ({ room, onClose, onSubmit }) => {
 
     const getAvailableSlotsForDay = () => {
         if (!formData.date) return [];
-        const dayOfWeek = formData.date.toLocaleDateString("en-US", { weekday: "long" }); // e.g., "Wednesday"
-        const daySlots = room.availableSlots.find((slot) => slot.day === dayOfWeek);
-        return daySlots ? daySlots.slots : [];
+    
+        const selectedDate = formData.date.toISOString().split("T")[0]; // Convert selected date to "YYYY-MM-DD"
+        console.log('Selected Date:', selectedDate);
+        console.log('Room Available Slots:', room.availableSlots);
+    
+        // Iterate through availableSlots to find matching `slotsByDate`
+        for (const slotGroup of room.availableSlots) {
+            const matchingDate = slotGroup.slotsByDate.find((slotDate) => slotDate.date === selectedDate);
+            if (matchingDate) {
+                console.log('Matching Slots:', matchingDate.slots);
+                return matchingDate.slots; // Return slots for the selected date
+            }
+        }
+    
+        console.log('No slots found for the selected date.');
+        return []; // Return an empty array if no slots match the date
+    };
+    
+
+    const validatePhone = (phone) => {
+        const phoneRegex = /^[0-9]{10}$/; // Adjust regex based on your requirements
+        return phoneRegex.test(phone);
     };
 
     const handleFormSubmit = async () => {
@@ -42,24 +61,31 @@ const BookingModal = ({ room, onClose, onSubmit }) => {
             return;
         }
 
+        if (!validatePhone(formData.phone)) {
+            toast.error("Please enter a valid phone number.");
+            return;
+        }
+
         const bookingData = {
             roomId: room._id,
-            date: formData.date.toISOString(), // Format date as ISO string
+            date: formData.date.toISOString(), // Convert date to ISO string
             slot: formData.timeSlot,
             name: formData.name,
             phone: formData.phone,
             email: formData.email,
         };
+
         try {
             setIsSubmitting(true);
-            const response = await http.post(`${API_ENDPOINTS.BOOKINGS}`, bookingData); // Replace with your API endpoint
+            const response = await http.post(API_ENDPOINTS.BOOKINGS, bookingData);
             toast.success("Booking completed successfully!");
-            //onSubmit(response.data);
+            //onSubmit(response.data); // Call parent handler with response data
             onClose();
         } catch (error) {
             toast.error(`Booking failed: ${error.response?.data?.message || error.message}`);
         } finally {
             setIsSubmitting(false);
+            handleBookingComplete()
         }
     };
 

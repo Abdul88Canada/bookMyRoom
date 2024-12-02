@@ -12,6 +12,7 @@ import LandingPage from "../pages/landing/LandingPage";
 import LocationPage from "../pages/LocationPage";
 import UserDashboard from "../pages/UserDashboard";
 import UserCompanyDirectory from "../pages/UserCompanyDirectory";
+import UserSchedulePage from "../pages/UserSchedulePage";
 
 import AdminSignup from "../pages/auth/AdminSignup";
 import AdminLogin from "../pages/auth/AdminLogin";
@@ -26,6 +27,7 @@ const Index = () => {
                 <Route path="/app/dashboard" element={<UserDashboard />} />
                 <Route path="/app/company-directory" element={<UserCompanyDirectory />} />
                 <Route path="/app/location/:locationId" element={<LocationPage />} />
+                <Route path="/app/schedule/" element={<UserSchedulePage />} />
             </Route>
             <Route path="/admin" element={<AdminProtectedRoute><AdminMainLayout /></AdminProtectedRoute>}>
                 {/* Nested route */}

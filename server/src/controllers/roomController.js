@@ -97,7 +97,6 @@ export const getRoomsByLocationId = async (req, res) => {
             return res.status(404).json({ message: "No rooms found for this location." });
         }
 
-
         // Fetch all bookings for the rooms
         const roomIds = rooms.map((room) => room._id);
 
@@ -105,36 +104,54 @@ export const getRoomsByLocationId = async (req, res) => {
             room: { $in: roomIds },
         });
 
-        // Create a dictionary of booked slots by room and weekday
-        const bookedSlotsByRoomAndWeekday = {};
+        // Create a dictionary of booked slots by room, weekday, and date
+        const bookedSlotsByRoomAndDate = {};
         bookings.forEach((booking) => {
             const roomId = booking.room.toString();
-            const bookingDate = new Date(booking.date);
-            const weekday = bookingDate.toLocaleDateString("en-US", { weekday: "long" }); // e.g., "Wednesday"
-            const key = `${roomId}-${weekday}`;
+            const bookingDate = new Date(booking.date).toISOString().split('T')[0]; // Normalize date
+            const key = `${roomId}-${bookingDate}`;
 
-            if (!bookedSlotsByRoomAndWeekday[key]) {
-                bookedSlotsByRoomAndWeekday[key] = [];
+            if (!bookedSlotsByRoomAndDate[key]) {
+                bookedSlotsByRoomAndDate[key] = [];
             }
-            bookedSlotsByRoomAndWeekday[key].push(booking.slot);
+            bookedSlotsByRoomAndDate[key].push(booking.slot);
         });
-
 
         // Filter available slots for each room
         const roomsWithAvailableSlots = rooms.map((room) => {
-
             const updatedAvailableSlots = room.availableSlots.map((slotGroup) => {
-                const key = `${room._id}-${slotGroup.day}`;
-                const bookedSlots = bookedSlotsByRoomAndWeekday[key] || [];
+                const today = new Date(); // Current date
+                const slotDay = slotGroup.day;
 
-                // Filter out booked slots
-                const availableSlots = slotGroup.slots.filter(
-                    (slot) => !bookedSlots.includes(slot)
-                );
+                // Generate all dates matching the slot day in the future
+                const datesMatchingDay = [];
+                for (let i = 0; i < 30; i++) { // Check for the next 30 days
+                    const futureDate = new Date(today);
+                    futureDate.setDate(today.getDate() + i);
+                    const weekday = futureDate.toLocaleDateString("en-US", { weekday: "long" });
+                    if (weekday === slotDay) {
+                        datesMatchingDay.push(futureDate.toISOString().split('T')[0]);
+                    }
+                }
+
+                const availableSlotsForGroup = datesMatchingDay.map((matchingDate) => {
+                    const key = `${room._id}-${matchingDate}`;
+                    const bookedSlots = bookedSlotsByRoomAndDate[key] || [];
+
+                    // Filter out booked slots for this specific date
+                    const availableSlots = slotGroup.slots.filter(
+                        (slot) => !bookedSlots.includes(slot)
+                    );
+
+                    return {
+                        date: matchingDate,
+                        slots: availableSlots,
+                    };
+                });
 
                 return {
                     day: slotGroup.day,
-                    slots: availableSlots,
+                    slotsByDate: availableSlotsForGroup,
                 };
             });
 
@@ -143,15 +160,13 @@ export const getRoomsByLocationId = async (req, res) => {
                 availableSlots: updatedAvailableSlots,
             };
         });
-
-        console.log("Final processed rooms with available slots:", roomsWithAvailableSlots);
-
         res.status(200).json(roomsWithAvailableSlots);
     } catch (error) {
         console.error("Error occurred:", error);
         res.status(500).json({ message: "Server error.", error });
     }
 };
+
 
 
 

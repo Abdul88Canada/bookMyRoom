@@ -160,3 +160,32 @@ export const getBookingsByDate = async (req, res) => {
     }
 };
 
+export const getBookingsForCompany = async (req, res) => {
+    try {
+        const { companyId } = req.user; // Assume companyId is in the user's token
+        const { startDate, endDate } = req.query;
+
+        if (!startDate || !endDate) {
+            return res.status(400).json({ message: 'Start date and end date are required.' });
+        }
+
+        const bookings = await Booking.find({
+            company: companyId,
+            date: {
+                $gte: new Date(startDate),
+                $lte: new Date(endDate),
+            },
+        }).populate('room').populate({
+            path: 'room',
+            populate: {
+                path: 'location', // Populate the location field of the room
+                select: 'name', // Select only the name field from the location
+            },
+        });
+
+        res.status(200).json(bookings);
+    } catch (error) {
+        console.error('Error fetching bookings:', error);
+        res.status(500).json({ message: 'Server error.' });
+    }
+};

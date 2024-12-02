@@ -41,7 +41,15 @@ const LocationPage = () => {
         setShowModal(false);
     };
 
-
+    const handleBookingComplete = async () => {
+        // Refetch rooms after booking
+        try {
+            const response = await http.get(`${API_ENDPOINTS.GET_ROOMS}/${locationId}`);
+            setRooms(response.data);
+        } catch (error) {
+            console.error("Failed to refetch rooms", error);
+        }
+    };
 
     return (
         <div className="location-page">
@@ -68,7 +76,7 @@ const LocationPage = () => {
                 <BookingModal
                     room={selectedRoom}
                     onClose={handleModalClose}
-                    
+                    handleBookingComplete={handleBookingComplete}
                 />
             )}
         </div>

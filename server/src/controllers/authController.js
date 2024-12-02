@@ -129,7 +129,7 @@ export const userSignup = [
       // Generate a token
       const token = jwt.sign({ id: newUser._id, email: newUser.email }, process.env.JWT, { expiresIn: '30d' });
 
-      res.status(201).json({ user: { id: newUser._id, name: newUser.name, email: newUser.email }, token });
+      res.status(201).json({ user: { id: newUser._id, name: newUser.name, email: newUser.email, companyId: newUser.companyId }, token });
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Server error.' });
@@ -156,7 +156,7 @@ export const userLogin = async (req, res) => {
     // Generate a token
     const token = jwt.sign({ id: user._id, email: user.email }, process.env.JWT, { expiresIn: '30d' });
 
-    res.status(200).json({ user: { id: user._id, name: user.name, email: user.email }, token });
+    res.status(200).json({ user: { id: user._id, name: user.name, email: user.email, companyId: user.companyId }, token });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Server error.' });

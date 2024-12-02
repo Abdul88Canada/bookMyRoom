@@ -1,0 +1,121 @@
+.schedule-page {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.schedule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.schedule-grid {
+    display: grid;
+    grid-template-columns: 150px repeat(5, 1fr); /* Adjust column sizes as needed */
+    gap: 1px; /* Space between columns */
+    background-color: #eaeef3; /* Grid background */
+}
+
+.time-column {
+    display: grid;
+    grid-template-rows: repeat(13, 1fr); /* Match the number of time slots */
+}
+
+.day-column {
+    display: grid;
+    grid-template-rows: repeat(13, 1fr); /* Match the number of time slots */
+}
+
+.time-slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px; /* Ensure consistent height */
+    background-color: #ffffff; /* Background for time slots */
+    border-bottom: 1px solid #eaeef3; /* Add border for separation */
+}
+
+.time-column .time-slot {
+    font-weight: bold;
+    color: #6c757d;
+    border-right: 1px solid #eaeef3; /* Separate time slots from days */
+}
+
+.day-column .time-slot {
+    background-color: #ffffff;
+    border-left: 1px solid #eaeef3; /* Separate days */
+}
+
+.day-column .time-slot.booked {
+    background-color: #485fb8; /* Highlight booked slots */
+    color: #ffffff; /* Text color for booked slots */
+    text-align: center;
+    font-size: small;
+}
+
+.day-column .time-slot.booked:hover {
+    background-color: #364494; /* Hover effect for booked slots */
+}
+
+
+.schedule-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #f4f7fb; /* Light background color */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-button {
+    background-color: #e4e9f2;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+    background-color: #d0d7e8;
+}
+
+.nav-button i {
+    color: #495057;
+    font-size: 16px;
+}
+
+.date-display {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Arial', sans-serif;
+}
+
+.today-button {
+    background-color: #e4e9f2;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #495057;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.today-button:hover {
+    background-color: #d0d7e8;
+}
+
+.current-week {
+    font-size: 16px;
+    font-weight: bold;
+    color: #495057;
+}
