@@ -50,10 +50,11 @@ const AdminSchedulePage = () => {
     };
 
     const getBookingsForDay = (day) => {
-        const targetDate = new Date(weekStart);
-        targetDate.setDate(targetDate.getDate() + daysOfWeek.indexOf(day));
-        const dateString = targetDate.toISOString().split('T')[0];
-        return bookings.filter((booking) => booking.date.startsWith(dateString));
+        const dayIndex = daysOfWeek.indexOf(day); // Get the index of the day
+        return bookings.filter((booking) => {
+            const bookingDate = new Date(booking.date);
+            return bookingDate.getDay() === dayIndex; // Match the day index
+        });
     };
 
     return (
@@ -95,9 +96,9 @@ const AdminSchedulePage = () => {
                                 <div
                                     key={index}
                                     className={`time-slot ${booking ? 'booked' : ''}`}
-                                    title={booking ? `${booking.name} - ${booking.room.name} (${booking.room.location.name})` : ''} // Updated title
+                                    title={booking ? `${booking.company} - ${booking.room.name} (${booking.room.location})` : ''} // Updated title
                                 >
-                                    {booking ? `${booking.name} (${booking.room.location.name}, ${booking.room.name})` : ''} {/* Updated content */}
+                                    {booking ? `${booking.company} (${booking.room.location}, ${booking.room.name})` : ''} {/* Updated content */}
                                 </div>
 
                             );

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import RoomCard from "../../components/RoomCard";
+import AdminRoomCard from "../../components/AdminRoomCard";
 import AddRoomModal from "../../components/AddRoomModal";
 import "../../assets/css/LocationPage.css";
 import http from "../../frameworks/basic-rest/http";
@@ -46,7 +46,7 @@ const AdminLocationPage = () => {
             <div className="room-list">
                 {rooms.length > 0 ? (
                     rooms.map((room) => (
-                        <RoomCard key={room._id} room={room} />
+                        <AdminRoomCard key={room._id} room={room} />
                     ))
                 ) : (
                     <p>No rooms available for the selected criteria.</p>

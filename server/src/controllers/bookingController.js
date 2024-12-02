@@ -1,5 +1,6 @@
 import Booking from '../models/Booking.js';
 import Room from '../models/Room.js';
+import Company from '../models/Company.js';
 
 export const createBooking = async (req, res) => {
     try {
@@ -11,13 +12,15 @@ export const createBooking = async (req, res) => {
                 message: 'roomId, date, and slot are required.',
             });
         }
-
         // Validate slot availability
         const existingBooking = await Booking.findOne({ room: roomId, date, slot });
         if (existingBooking) {
             return res.status(400).json({ message: 'Slot already booked.' });
         }
-
+        const company = await Company.findOne({companyId});
+        if (!company) {
+            return res.status(400).json({ message: 'company issue.' });
+        }
         // Create a new booking
         const booking = new Booking({
             room: roomId,
@@ -26,7 +29,7 @@ export const createBooking = async (req, res) => {
             slot,
             name,
             email,
-            company: companyId
+            company: company._id
         });
 
         // Save booking to the database
@@ -168,9 +171,10 @@ export const getBookingsForCompany = async (req, res) => {
         if (!startDate || !endDate) {
             return res.status(400).json({ message: 'Start date and end date are required.' });
         }
+        const company = await Company.findOne({companyId});
 
         const bookings = await Booking.find({
-            company: companyId,
+            company: company._id,
             date: {
                 $gte: new Date(startDate),
                 $lte: new Date(endDate),
@@ -203,15 +207,34 @@ export const getBookingsForCompanyAdmin = async (req, res) => {
                 $gte: new Date(startDate),
                 $lte: new Date(endDate),
             },
-        }).populate('room').populate({
-            path: 'room',
-            populate: {
-                path: 'location', // Populate the location field of the room
-                select: 'name', // Select only the name field from the location
-            },
-        });
+        })
+            .populate('room')
+            .populate({
+                path: 'room',
+                populate: {
+                    path: 'location', // Populate the location field of the room
+                    select: 'name', // Select only the name field from the location
+                },
+            })
+            .populate({
+                path: 'company', // Populate the company field
+                select: 'name', // Select only the name field from the company
+            });
 
-        res.status(200).json(bookings);
+        // Map the response to include the company name
+        const formattedBookings = bookings.map((booking) => ({
+            _id: booking._id,
+            date: booking.date,
+            slot: booking.slot,
+            room: {
+                _id: booking.room._id,
+                name: booking.room.name,
+                location: booking.room.location.name,
+            },
+            company: booking.company ? booking.company.name : 'Unknown', // Include the company name
+        }));
+
+        res.status(200).json(formattedBookings);
     } catch (error) {
         console.error('Error fetching bookings:', error);
         res.status(500).json({ message: 'Server error.' });

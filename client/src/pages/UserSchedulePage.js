@@ -50,10 +50,11 @@ const UserSchedulePage = () => {
     };
 
     const getBookingsForDay = (day) => {
-        const targetDate = new Date(weekStart);
-        targetDate.setDate(targetDate.getDate() + daysOfWeek.indexOf(day));
-        const dateString = targetDate.toISOString().split('T')[0];
-        return bookings.filter((booking) => booking.date.startsWith(dateString));
+        const dayIndex = daysOfWeek.indexOf(day); // Get the index of the day
+        return bookings.filter((booking) => {
+            const bookingDate = new Date(booking.date);
+            return bookingDate.getDay() === dayIndex; // Match the day index
+        });
     };
 
     return (
@@ -78,7 +79,7 @@ const UserSchedulePage = () => {
 
             <div className="schedule-grid">
                 <div className="time-column">
-                <h3>Time</h3>
+                    <h3>Time</h3>
                     {timeSlots.map((slot, index) => (
                         <div key={index} className="time-slot">
                             {slot}
@@ -90,16 +91,17 @@ const UserSchedulePage = () => {
                         <h3>{day}</h3>
                         {timeSlots.map((slot, index) => {
                             const bookingsForDay = getBookingsForDay(day);
-                            const booking = bookingsForDay.find((b) => b.slot === slot);
+                            const booking = bookingsForDay.find((b) => {
+                                return b.slot === slot
+                            });
                             return (
                                 <div
                                     key={index}
                                     className={`time-slot ${booking ? 'booked' : ''}`}
-                                    title={booking ? `${booking.name} - ${booking.room.name} (${booking.room.location.name})` : ''} // Updated title
+                                    title={booking ? `${booking.name} - ${booking.room.name} (${booking.room.location.name})` : ''} // Tooltip content
                                 >
-                                    {booking ? `${booking.name} (${booking.room.location.name}, ${booking.room.name})` : ''} {/* Updated content */}
+                                    {booking ? `${booking.name} (${booking.room.location.name}, ${booking.room.name})` : ''} {/* Display booking info */}
                                 </div>
-
                             );
                         })}
                     </div>

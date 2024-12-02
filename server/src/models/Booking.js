@@ -9,7 +9,7 @@ const bookingSchema = new mongoose.Schema({
     name: {type: String},
     phone: {type: String},
     email: {type: String},
-    company: {type: String}
+    company: {type: mongoose.Schema.Types.ObjectId, ref: 'mrb_Company'}
 });
 
 const Booking = mongoose.model('Booking', bookingSchema);
