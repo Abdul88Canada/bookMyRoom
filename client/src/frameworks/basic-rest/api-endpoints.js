@@ -9,7 +9,7 @@ export const API_ENDPOINTS = {
     USER_COMPANY: '/user/company',
 
     ADMIN_ADD_COMPANY: '/admin/company/add',
-    ADMIN_GET_COMPANY: '/admin/company/',
+    ADMIN_GET_COMPANY: '/admin/company',
     ADMIN_CREATE_ROOM: '/admin/rooms',
     ADMIN_BOOKINGS_BY_COMPANY: '/admin/bookings/company',
 

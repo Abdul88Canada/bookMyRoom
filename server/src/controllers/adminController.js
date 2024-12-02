@@ -1,5 +1,6 @@
 import Company from '../models/Company.js';
 import Booking from '../models/Booking.js';
+import User from '../models/User.js';
 
 // Generate a unique 4-digit ID
 const generateUniqueCompanyId = async () => {
@@ -66,8 +67,8 @@ export const getCompanyById = async (req, res) => {
         if (!company) {
             return res.status(404).json({ message: "Company not found." });
         }
-
-        res.status(200).json(company);
+        const users = await User.find({companyId: company.companyId});
+        res.status(200).json({company, users});
     } catch (error) {
         console.error("Error fetching company:", error);
         res.status(500).json({ message: "Server error.", error });

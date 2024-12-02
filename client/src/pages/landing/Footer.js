@@ -1,5 +1,6 @@
 import React from 'react';
 import './Footer.css'; // Create a new CSS file for footer styles
+import logo from './inno-logo.png';
 
 const Footer = () => {
     return (
@@ -64,7 +65,7 @@ const Footer = () => {
 
                 {/* Section: Logos */}
                 <div className="footer-section logos">
-                    <img src="https://www.monshaat.gov.sa/themes/eportal2_new/assets/imgs/m_Logo.png" alt="Monsha'at Logo" />
+                    <img src={logo} alt="Monsha'at Logo"/>
                     <img src="https://www.monshaat.gov.sa/themes/eportal2_new/assets/imgs/vision-logo-2030-color.svg" alt="Vision 2030 Logo" />
                 </div>
                 <p>© 2024 c-mass. All rights reserved.</p>
