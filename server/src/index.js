@@ -16,7 +16,7 @@ import userRoutes from './routes/userRoutes.js';
 const app = express();
 app.use(express.json()); // for parsing application/json
 const corsOptions = {
-  origin: ['https://cmass-deu3.onrender.com', 'http://localhost:3000', 'https://c-mass.co', 'null'], // Array of allowed origins
+  origin: ['https://innovation-room-booking.onrender.com', 'http://localhost:3000'], // Array of allowed origins
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   allowedHeaders: 'Authorization, Content-Type',
   credentials: true,
