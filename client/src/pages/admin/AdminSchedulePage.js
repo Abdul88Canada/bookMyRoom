@@ -5,7 +5,16 @@ import { API_ENDPOINTS } from '../../frameworks/basic-rest/api-endpoints';
 
 const AdminSchedulePage = () => {
     const [bookings, setBookings] = useState([]);
-    const [weekStart, setWeekStart] = useState(new Date()); // Start of the current week
+    const getSundayOfCurrentWeek = () => {
+        const today = new Date();
+        const dayOfWeek = today.getDay(); // 0 for Sunday, 1 for Monday, ..., 6 for Saturday
+        const sunday = new Date(today);
+        sunday.setDate(today.getDate() - dayOfWeek); // Subtract days to get Sunday
+        sunday.setHours(0, 0, 0, 0); // Reset time to midnight
+        return sunday;
+    };
+    
+    const [weekStart, setWeekStart] = useState(getSundayOfCurrentWeek());
     const timeSlots = Array.from({ length: 14 }, (_, i) => `${8 + i}:00-${9 + i}:00`);
 
     useEffect(() => {
