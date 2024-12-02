@@ -3,12 +3,12 @@ import Room from '../models/Room.js';
 
 export const createBooking = async (req, res) => {
     try {
-        const { roomId, date, slot, name, phone, email } = req.body;
-
+        const { roomId, date, slot } = req.body;
+        const { name, email, companyId } = req.user;
         // Validate required fields
-        if (!roomId || !date || !slot || !name || !phone || !email) {
+        if (!roomId || !date || !slot) {
             return res.status(400).json({
-                message: 'roomId, date, slot, name, phone, and email are required.',
+                message: 'roomId, date, and slot are required.',
             });
         }
 
@@ -25,8 +25,8 @@ export const createBooking = async (req, res) => {
             date,
             slot,
             name,
-            phone,
             email,
+            company: companyId
         });
 
         // Save booking to the database
@@ -171,6 +171,34 @@ export const getBookingsForCompany = async (req, res) => {
 
         const bookings = await Booking.find({
             company: companyId,
+            date: {
+                $gte: new Date(startDate),
+                $lte: new Date(endDate),
+            },
+        }).populate('room').populate({
+            path: 'room',
+            populate: {
+                path: 'location', // Populate the location field of the room
+                select: 'name', // Select only the name field from the location
+            },
+        });
+
+        res.status(200).json(bookings);
+    } catch (error) {
+        console.error('Error fetching bookings:', error);
+        res.status(500).json({ message: 'Server error.' });
+    }
+};
+
+export const getBookingsForCompanyAdmin = async (req, res) => {
+    try {
+        const { startDate, endDate } = req.query;
+
+        if (!startDate || !endDate) {
+            return res.status(400).json({ message: 'Start date and end date are required.' });
+        }
+
+        const bookings = await Booking.find({
             date: {
                 $gte: new Date(startDate),
                 $lte: new Date(endDate),

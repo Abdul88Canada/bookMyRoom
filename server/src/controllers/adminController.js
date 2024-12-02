@@ -1,4 +1,5 @@
 import Company from '../models/Company.js';
+import Booking from '../models/Booking.js';
 
 // Generate a unique 4-digit ID
 const generateUniqueCompanyId = async () => {
@@ -90,5 +91,3 @@ export const deleteCompany = async (req, res) => {
         res.status(500).json({ message: "Server error.", error });
     }
 };
-
-  

@@ -24,12 +24,6 @@
   overflow: hidden; /* Prevent content overflow */
 }
 
-.main-layout .left-nav {
-  flex: 0 0 250px; /* Fixed width for LeftNav */
-  height: 100vh; /* Full height for the sidebar */
-  background-color: #f4f7fb; /* Sidebar background color */
-}
-
 .main-layout .content {
   flex: 1; /* Take the remaining space */
   padding: 20px; /* Add padding for content */

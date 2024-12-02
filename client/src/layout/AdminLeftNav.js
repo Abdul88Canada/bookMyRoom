@@ -21,7 +21,7 @@ const AdminLeftNav = () => {
                 <ul>
                     <li>
                         <NavLink
-                            to="/schedule"
+                            to="/admin/schedule"
                             className={({ isActive }) =>
                                 isActive ? 'nav-link active' : 'nav-link'
                             }

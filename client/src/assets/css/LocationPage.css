@@ -109,7 +109,6 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
     z-index: 1001;
     position: relative;
 }
@@ -143,13 +142,11 @@
 .modal-body {
     display: flex;
     flex-direction: column;
-    gap: 15px;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 5px;
 }
 
 .form-group label {

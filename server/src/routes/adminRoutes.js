@@ -3,9 +3,11 @@ import {
     addCompany,
     getCompanies,
     getCompanyById,
-    deleteCompany,
+    deleteCompany
 } from '../controllers/adminController.js';
 import { createRoom } from '../controllers/roomController.js';
+import {getBookingsForCompanyAdmin} from '../controllers/bookingController.js';
+
 import authMiddleware from '../middleware/authMiddleware.js';
 import { checkAdminMiddleware } from '../middleware/checkAdminMiddleware.js';
 
@@ -28,5 +30,7 @@ router.get('/company/:id', getCompanyById);
 router.delete('/company/:id', deleteCompany);
 
 router.post('/rooms', createRoom);
+
+router.get('/bookings/company', getBookingsForCompanyAdmin);
 
 export default router;

@@ -127,7 +127,7 @@ export const userSignup = [
       await newUser.save();
 
       // Generate a token
-      const token = jwt.sign({ id: newUser._id, email: newUser.email }, process.env.JWT, { expiresIn: '30d' });
+      const token = jwt.sign({ id: newUser._id, name: newUser.name, email: newUser.email, companyId: newUser.companyId }, process.env.JWT, { expiresIn: '30d' });
 
       res.status(201).json({ user: { id: newUser._id, name: newUser.name, email: newUser.email, companyId: newUser.companyId }, token });
     } catch (error) {
@@ -154,7 +154,7 @@ export const userLogin = async (req, res) => {
     }
 
     // Generate a token
-    const token = jwt.sign({ id: user._id, email: user.email }, process.env.JWT, { expiresIn: '30d' });
+    const token = jwt.sign({ id: user._id, name: user.name, email: user.email, companyId: user.companyId }, process.env.JWT, { expiresIn: '30d' });
 
     res.status(200).json({ user: { id: user._id, name: user.name, email: user.email, companyId: user.companyId }, token });
   } catch (error) {

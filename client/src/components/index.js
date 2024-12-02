@@ -18,6 +18,7 @@ import AdminSignup from "../pages/auth/AdminSignup";
 import AdminLogin from "../pages/auth/AdminLogin";
 import AdminLocationPage from "../pages/admin/AdminLocationPage";
 import AdminCompanyDirectory from "../pages/admin/AdminCompanyDirectory";
+import AdminSchedulePage from "../pages/admin/AdminSchedulePage";
 
 const Index = () => {
     return (
@@ -33,6 +34,7 @@ const Index = () => {
                 {/* Nested route */}
                 <Route path="/admin/dashboard" element={<AdminLocationPage />} />
                 <Route path="/admin/company-directory" element={<AdminCompanyDirectory />} />
+                <Route path="/admin/schedule" element={<AdminSchedulePage />} />
             </Route>
             <Route path="/" element={<LandingPage />} />
             <Route path="/signup" element={<Signup />} />

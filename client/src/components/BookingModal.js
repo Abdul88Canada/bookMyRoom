@@ -10,9 +10,6 @@ const BookingModal = ({ room, onClose, handleBookingComplete }) => {
     const [formData, setFormData] = useState({
         date: null,
         timeSlot: "",
-        name: "",
-        phone: "",
-        email: "",
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -50,19 +47,9 @@ const BookingModal = ({ room, onClose, handleBookingComplete }) => {
     };
     
 
-    const validatePhone = (phone) => {
-        const phoneRegex = /^[0-9]{10}$/; // Adjust regex based on your requirements
-        return phoneRegex.test(phone);
-    };
-
     const handleFormSubmit = async () => {
-        if (!formData.date || !formData.timeSlot || !formData.name || !formData.phone || !formData.email) {
+        if (!formData.date || !formData.timeSlot ) {
             toast.error("Please fill in all required fields.");
-            return;
-        }
-
-        if (!validatePhone(formData.phone)) {
-            toast.error("Please enter a valid phone number.");
             return;
         }
 
@@ -70,9 +57,6 @@ const BookingModal = ({ room, onClose, handleBookingComplete }) => {
             roomId: room._id,
             date: formData.date.toISOString(), // Convert date to ISO string
             slot: formData.timeSlot,
-            name: formData.name,
-            phone: formData.phone,
-            email: formData.email,
         };
 
         try {
@@ -129,39 +113,6 @@ const BookingModal = ({ room, onClose, handleBookingComplete }) => {
                                 </option>
                             ))}
                         </select>
-                    </div>
-                    <div className="form-group">
-                        <label>Name</label>
-                        <input
-                            type="text"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleInputChange}
-                            placeholder="Enter your name"
-                            disabled={isSubmitting}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Phone</label>
-                        <input
-                            type="text"
-                            name="phone"
-                            value={formData.phone}
-                            onChange={handleInputChange}
-                            placeholder="Enter your phone number"
-                            disabled={isSubmitting}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label>Email</label>
-                        <input
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleInputChange}
-                            placeholder="Enter your email"
-                            disabled={isSubmitting}
-                        />
                     </div>
                 </div>
                 <div className="modal-footer">

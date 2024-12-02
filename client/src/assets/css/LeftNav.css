@@ -29,20 +29,44 @@ nav ul li a.active span {
     color: #ffffff;
 }
 
-/* Logo */
-.leftnav-logo {
-    margin: 0 auto;
-    display: block;
-    width: 60%;
-}
-
+/* Sidebar header */
 /* Sidebar header */
 .sidebar-header {
     text-align: center;
-    padding: 10px 0;
+    padding: 20px 0; /* Adjust padding to provide consistent spacing */
     color: #495057;
     font-size: 16px;
     font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Align items in the center */
+    justify-content: center; /* Center items vertically */
+}
+
+/* Logo */
+.sidebar-header .logo {
+    width: 80px; /* Adjust size as needed */
+    height: 80px;
+    margin-bottom: 10px; /* Add space below the logo */
+}
+
+/* Adjust the text below the logo */
+.sidebar-header p {
+    font-size: 1rem;
+    color: #495057;
+    margin: 0; /* Remove unnecessary margin */
+}
+
+
+.sidebar-header h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 10px 0 5px;
+}
+
+.sidebar-header p {
+    font-size: 0.9rem;
+    color: #777;
 }
 
 /* Nav styles */
@@ -123,26 +147,18 @@ nav ul li:hover i {
 
 @media screen and (max-width: 768px) {
     .left-nav {
-        max-width: 20px; /* Narrower width for small screens */
-        padding: 10px 0; /* Adjust padding */
-        display:contents;
-        background-color: #f4f7fb; /* Light background */
+        width: 60px;
     }
 
-    .left-nav ul {
-        gap: 15px; /* Reduce spacing between items */
+    .left-nav ul li {
+        padding: 12px 0; /* Adjust padding */
     }
 
-    .left-nav li {
-        width: 20px; /* Smaller circular items */
-        height: 20px; /* Keep items square */
+    .left-nav ul li span {
+        display: none;
     }
 
-    .left-nav li span {
-        display: none; /* Hide the text labels */
-    }
-
-    .left-nav li i {
-        margin-right: 0; /* Remove icon margin */
+    .left-nav ul li i {
+        margin-right: 0;
     }
 }
